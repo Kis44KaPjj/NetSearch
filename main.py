@@ -15,7 +15,7 @@ try:
         print(BANNER)
         print('=' * 45)
         
-        domain = args.domain or input('\n\u276f Enter a domain: ').strip()
+    domain = args.domain or input('\n\u276f Enter a domain: ').strip()
 
     try:
         ip = socket.gethostbyname(domain)
@@ -26,4 +26,3 @@ try:
 except KeyboardInterrupt:
     print('\nCanceled by user.')
     sys.exit(0)
-
