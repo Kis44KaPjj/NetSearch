@@ -1,0 +1,30 @@
+name: Test x86_64 Binary
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test-x86_64:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install pyinstaller
+
+      - name: Build Binary (x86_64)
+        run: |
+          pyinstaller --onefile --clean --name netsearch-x86_64 main.py
+
+      - name: Run Binary Test
+        run: |
+          chmod +x dist/netsearch-x86_64
+          ./dist/netsearch-x86_64
