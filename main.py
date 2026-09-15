@@ -37,4 +37,5 @@ try:
 
 except KeyboardInterrupt:
     print('\nCanceled by user.')
+    logger.warning('Canceled by user [Ctrl+C]')
     sys.exit(0)
